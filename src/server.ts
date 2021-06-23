@@ -1,9 +1,11 @@
-import express from 'express'
+import express from "express"
 
-const app = express()
+const app = express();
 
+    app.get('/', (req, res) => {
+        return res.send('Estou rodando')
+    })
 
-
-app.listen(3000, () => console.log('Server is Running'))
+app.listen(8080, () => console.log('Server is Running'))
 
 
