@@ -1,5 +1,4 @@
-import { EntityRepository, Entity, getCustomRepository } from "typeorm";
-import "../repositories/tagRepositories"
+import { getCustomRepository } from "typeorm";
 import { TagsRepositories } from "../repositories/tagRepositories";
 
 interface ITag{
@@ -7,23 +6,23 @@ interface ITag{
 }
 
 class CreateTagService{
-    async execute({name} : ITag){
-        const tagRepositories = getCustomRepository(TagsRepositories)
+    
+    async execute(name: string) {
+        const tagRepositories = getCustomRepository(TagsRepositories);
 
         if(!name){
-            throw new Error("Name Void")
+            throw new Error("Incorrect name!");
         }
-        else
-        {
-            const alreadExistTag = await tagRepositories.findOne({name});
-            if(alreadExistTag){
-                throw new Error("This Tag Already Exist")
-            }else
-            {
-                const newTag = tagRepositories.create({name});
-                await tagRepositories.save(newTag);
-                return newTag;
-            }
+        
+        const alreadExistsTag = await tagRepositories.findOne({name});
+            
+        if(alreadExistsTag){
+            throw new Error("This Tag Already Exist!");
+           
+        const newTag = tagRepositories.create({name});
+        await tagRepositories.save(newTag);
+        return newTag;
+            
         }
     }
 }

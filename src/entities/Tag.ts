@@ -1,8 +1,8 @@
-import { Entity, Column, CreateDateColumn, PrimaryColumn,UpdateDateColumn } from "typeorm";
+import { Entity, Column, CreateDateColumn, PrimaryColumn, UpdateDateColumn } from "typeorm";
 import {v4 as uuid} from "uuid";
 
 @Entity("tags")
-    class Tags{
+    class Tag{
         @PrimaryColumn()
         readonly id: string;
         @Column()
@@ -19,4 +19,4 @@ import {v4 as uuid} from "uuid";
         }
     }
 
-    export { Tags }
+    export { Tag }
