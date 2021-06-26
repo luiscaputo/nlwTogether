@@ -1,4 +1,4 @@
-import { Entity, Column, CreateDateColumn, PrimaryColumn } from "typeorm";
+import { Entity, Column, CreateDateColumn, PrimaryColumn,UpdateDateColumn } from "typeorm";
 import {v4 as uuid} from "uuid";
 
 @Entity("tags")
@@ -9,7 +9,7 @@ import {v4 as uuid} from "uuid";
         name: string;
         @CreateDateColumn()
         created_at: Date;
-        @CreateDateColumn()
+        @UpdateDateColumn()
         updated_at: Date;
 
         constructor (){
