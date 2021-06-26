@@ -33,6 +33,32 @@ export class Comliments1624709023373 implements MigrationInterface {
                         type: "timestamp",
                         default: "now()",
                     }
+                ],
+                foreignKeys: [
+                    {
+                        name: "FKUserSendCompliments",
+                        referencedTableName: "Users",
+                        referencedColumnNames: ["id"],
+                        columnNames: ["user_sender"],
+                        onDelete: "SET NULL",
+                        onUpdate: "SET NULL"
+                    },
+                    {
+                        name: "FKUserReceiveCompliments",
+                        referencedTableName: "Users",
+                        referencedColumnNames: ["id"],
+                        columnNames: ["user_receiver"],
+                        onDelete: "SET NULL",
+                        onUpdate: "SET NULL"
+                    },
+                    {
+                        name: "FKTagsCompliments",
+                        referencedTableName: "Tag",
+                        referencedColumnNames: ["id"],
+                        columnNames: ["tag_id"],
+                        onDelete: "SET NULL",
+                        onUpdate: "SET NULL"
+                    }
                 ]
             })
         );
