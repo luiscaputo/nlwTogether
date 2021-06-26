@@ -8,6 +8,7 @@ interface ITag{
 class CreateTagService{
     
     async execute(name: string) {
+        
         const tagRepositories = getCustomRepository(TagsRepositories);
 
         if(!name){
@@ -17,13 +18,12 @@ class CreateTagService{
         const alreadExistsTag = await tagRepositories.findOne({name});
             
         if(alreadExistsTag){
-            throw new Error("This Tag Already Exist!");
-           
+            throw new Error("This Tag Already Exist!")
+            
+        }
         const newTag = tagRepositories.create({name});
         await tagRepositories.save(newTag);
         return newTag;
-            
-        }
     }
 }
 

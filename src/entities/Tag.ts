@@ -2,7 +2,8 @@ import { Entity, Column, CreateDateColumn, PrimaryColumn, UpdateDateColumn } fro
 import {v4 as uuid} from "uuid";
 
 @Entity("tags")
-    class Tag{
+    class Tag
+    {
         @PrimaryColumn()
         readonly id: string;
         @Column()
@@ -12,11 +13,11 @@ import {v4 as uuid} from "uuid";
         @UpdateDateColumn()
         updated_at: Date;
 
-        constructor (){
+        constructor () {
             if(!this.id){
                 this.id = uuid();
             }
         }
     }
 
-    export { Tag }
+export { Tag };
