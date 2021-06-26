@@ -9,12 +9,14 @@ interface IAutenticateUser{
 }
 
 class AutenticateUserService{
+    
     async execute({email, password} : IAutenticateUser){
         //verificar de usuario exist
         const userRepositories = getCustomRepository(UsersRepositories);
 
-        const user = await userRepositories.findOne(email);
-            if(!user){
+        const user = await userRepositories.findOne({email});
+            
+        if(!user){
                 throw new Error("Email/Password Inválido")
             }
 
