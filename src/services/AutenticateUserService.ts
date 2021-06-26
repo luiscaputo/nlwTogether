@@ -25,7 +25,7 @@ class AutenticateUserService{
                 throw new Error("Email/Password inválido")
             }
 
-            const token = sign({    
+            const token = sign({       
                 email: user.email
             },"luiscaputodev", {
                 subject: user.id,
